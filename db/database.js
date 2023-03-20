@@ -25,9 +25,25 @@ const disconnect = async () => {
     }
 };
 
+//database calls
+const getAllItems = () => (
+    client
+        .query("select * from itemdirectory")
+        .then((allItemsfromDatabase) => {
+            return allItemsfromDatabase
+        })
+        .catch((error) => {
+            throw error;
+        })
+);
+
 const database = {
     connect,
     disconnect,
+    getAllItems,
 };
+
+
+
 
 module.exports = database;
